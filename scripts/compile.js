@@ -4,15 +4,29 @@ const solc = require("solc");
 
 const contractsFolder = path.resolve(__dirname, "..", "contracts"); // path is relative to this file
 
-// Contracts paths
-console.log("Compiling Inbox contract...");
-const inboxContractPath = path.resolve(contractsFolder, "Inbox.sol");
-console.log("\tInput file:", inboxContractPath);
+console.log("Getting contracts from folder:", contractsFolder);
+const files = fs.readdirSync(contractsFolder).filter((fileName) => fileName.endsWith(".sol"));
+console.log("\tTotal contracts:", files.length);
 
-const inboxContractPathOutput = inboxContractPath.replace(".sol", ".json");
-const inboxContractCode = fs.readFileSync(inboxContractPath, "utf8");
+files.forEach((fileName) => {
+  console.log("Contract:", fileName);
+  const contractName = fileName.replace(".sol", "");
+  const contractFullPath = path.resolve(contractsFolder, fileName);
 
-const compiled = solc.compile(inboxContractCode, 1); // 1 = number of contracts to compile in the file
+  console.log("\tInput file:", contractFullPath);
 
-fs.writeFileSync(inboxContractPathOutput, JSON.stringify(compiled, null, 2));
-console.log("\tOutput file:", inboxContractPathOutput);
+  const contractCompiledPathOutput = contractFullPath.replace(".sol", ".compiled.json");
+  const contractPathOutput = contractFullPath.replace(".sol", ".json");
+  const contractCode = fs.readFileSync(contractFullPath, "utf8");
+
+  const compiled = solc.compile(contractCode, 1); // 1 = number of contracts to compile in the file
+
+  fs.writeFileSync(contractCompiledPathOutput, JSON.stringify(compiled, null, 2));
+  fs.writeFileSync(contractPathOutput, JSON.stringify({
+    name: contractName,
+    bytecode: compiled.contracts[`:${contractName}`].bytecode,
+    abi: compiled.contracts[`:${contractName}`].interface,
+  }, null, 2));
+  console.log("\tOutput file (compiled):", contractCompiledPathOutput);
+  console.log("\tOutput file:", contractPathOutput);
+});
