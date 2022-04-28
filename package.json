@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ccddan/inbox-eth/issues"
   },
-  "homepage": "https://github.com/ccddan/inbox-eth#readme"
+  "homepage": "https://github.com/ccddan/inbox-eth#readme",
+  "dependencies": {
+    "solc": "^0.4.17"
+  }
 }
