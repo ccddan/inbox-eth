@@ -1,0 +1,23 @@
+{
+  "name": "inbox-eth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccddan/inbox-eth.git"
+  },
+  "keywords": [
+    "Ethereum",
+    "Solidity"
+  ],
+  "author": "ccddan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccddan/inbox-eth/issues"
+  },
+  "homepage": "https://github.com/ccddan/inbox-eth#readme"
+}
