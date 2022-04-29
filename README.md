@@ -7,3 +7,9 @@
    ```bash
    $ npm run compile
    ```
+
+2. Test contracts
+
+   ```bash
+   $ npm test
+   ```
