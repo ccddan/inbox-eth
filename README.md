@@ -5,5 +5,5 @@
 1. Compile contracts
 
    ```bash
-   $ node scripts/compile.js
+   $ npm run compile
    ```
