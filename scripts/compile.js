@@ -25,7 +25,7 @@ files.forEach((fileName) => {
   fs.writeFileSync(contractPathOutput, JSON.stringify({
     name: contractName,
     bytecode: compiled.contracts[`:${contractName}`].bytecode,
-    abi: compiled.contracts[`:${contractName}`].interface,
+    abi: JSON.parse(compiled.contracts[`:${contractName}`].interface),
   }, null, 2));
   console.log("\tOutput file (compiled):", contractCompiledPathOutput);
   console.log("\tOutput file:", contractPathOutput);
