@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile": "node scripts/compile.js",
+    "deploy": "node scripts/deploy.js",
     "test": "mocha"
   },
   "repository": {
@@ -22,9 +23,13 @@
   },
   "homepage": "https://github.com/ccddan/inbox-eth#readme",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.5.1",
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.2",
     "solc": "^0.4.17",
     "web3": "^1.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }
